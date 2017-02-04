@@ -1,6 +1,10 @@
 Library/
 Library/*.*
 
+Library/CurrentLayout.dwlt
+Library/CurrentMaximizeLayout.dwlt
+Library/LastSceneManagerSetup.txt
+
  =============== #
 # Unity generated #
 # =============== #
