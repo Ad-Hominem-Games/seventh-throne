@@ -60,22 +60,26 @@ public class player_Component : MonoBehaviour
                 case "z":     //pathos
                     pathosSymbol.SetActive(true);
                     isPlayingGame = true;
+                    GameNo++;
                     //start a pathos minigame
                     break;
 
                 case "x":     //logos
                     logosSymbol.SetActive(true);
                     isPlayingGame = true;
+                    GameNo++;
                     //start a logos minigame
                     break;
 
                 case "c":     //ethos
                     ethosSymbol.SetActive(true);
                     isPlayingGame = true;
+                    GameNo++;
                     //start an ethos minigame
                     break;
             }
         }
+        SetBubble();
     }
 
     public void gaffe()
@@ -102,6 +106,32 @@ public class player_Component : MonoBehaviour
         BalloonFour.SetActive(false);
         BalloonFive.SetActive(false);
         BalloonSix.SetActive(false);
+        GameNo = 0;
+    }
+
+    public void SetBubble()
+    {
+        switch (GameNo)
+        {
+            case 1:
+                BalloonOne.SetActive(true);
+                break;
+            case 2:
+                BalloonTwo.SetActive(true);
+                break;
+            case 3:
+                BalloonThree.SetActive(true);
+                break;
+            case 4:
+                BalloonFour.SetActive(true);
+                break;
+            case 5:
+                BalloonFive.SetActive(true);
+                break;
+            case 6:
+                BalloonSix.SetActive(true);
+                break;
+        }
     }
 
 }
