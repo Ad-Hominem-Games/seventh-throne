@@ -21,7 +21,9 @@ public class player_Component : MonoBehaviour
     public GameObject BalloonFour;
     public GameObject BalloonFive;
     public GameObject BalloonSix;
-
+    public int Combo = 0;
+    public GameObject SpamPathos;
+    public GameObject DodgeEthos;
 
     // Use this for initialization
     void Start()
@@ -59,22 +61,19 @@ public class player_Component : MonoBehaviour
             {
                 case "z":     //pathos
                     pathosSymbol.SetActive(true);
-                    isPlayingGame = true;
-                    GameNo++;
+                    PlayPathos();
                     //start a pathos minigame
                     break;
 
                 case "x":     //logos
                     logosSymbol.SetActive(true);
-                    isPlayingGame = true;
-                    GameNo++;
+                    PlayLogos();
                     //start a logos minigame
                     break;
 
                 case "c":     //ethos
                     ethosSymbol.SetActive(true);
-                    isPlayingGame = true;
-                    GameNo++;
+                    PlayEthos();
                     //start an ethos minigame
                     break;
             }
@@ -97,6 +96,8 @@ public class player_Component : MonoBehaviour
 
     public void EndPoint()
     {
+        OpinionFill.fillAmount += GameNo * Combo * 0.05f;
+        SpamPathos.SetActive(false);
             ethosSymbol.SetActive(false);
             pathosSymbol.SetActive(false);
             logosSymbol.SetActive(false);
@@ -107,6 +108,7 @@ public class player_Component : MonoBehaviour
         BalloonFive.SetActive(false);
         BalloonSix.SetActive(false);
         GameNo = 0;
+        Combo = 0;
     }
 
     public void SetBubble()
@@ -133,5 +135,20 @@ public class player_Component : MonoBehaviour
                 break;
         }
     }
-
+    public void PlayEthos()
+    {
+        isPlayingGame = true;
+        GameNo++;
+    }
+    public void PlayPathos()
+    {
+        isPlayingGame = true;
+        GameNo++;
+        SpamPathos.SetActive(true);
+    }
+    public void PlayLogos()
+    {
+        isPlayingGame = true;
+        GameNo++;
+    }
 }
