@@ -96,7 +96,7 @@ public class player_Component : MonoBehaviour
 
     public void EndPoint()
     {
-        OpinionFill.fillAmount += GameNo * Combo * 0.05f;
+        OpinionFill.fillAmount += GameNo * Combo * 0.005f;
         SpamPathos.SetActive(false);
             ethosSymbol.SetActive(false);
             pathosSymbol.SetActive(false);
