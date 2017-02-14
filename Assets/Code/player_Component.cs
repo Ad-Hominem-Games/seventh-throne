@@ -24,6 +24,7 @@ public class player_Component : MonoBehaviour
     public int Combo = 0;
     public GameObject SpamPathos;
     public GameObject DodgeEthos;
+    public GameObject IncantorumLogos;
 
     // Use this for initialization
     void Start()
@@ -50,7 +51,7 @@ public class player_Component : MonoBehaviour
 
         //different argument types (points)
         input = Input.inputString;
-        if (isPlayingGame == true && input == "b")
+        if (isPlayingGame == true && Input.GetKeyDown(KeyCode.Space))
         {
             isPlayingGame = false;
             EndPoint();
@@ -98,6 +99,8 @@ public class player_Component : MonoBehaviour
     {
         OpinionFill.fillAmount += GameNo * Combo * 0.005f;
         SpamPathos.SetActive(false);
+        DodgeEthos.SetActive(false);
+        IncantorumLogos.SetActive(false);
             ethosSymbol.SetActive(false);
             pathosSymbol.SetActive(false);
             logosSymbol.SetActive(false);
@@ -139,16 +142,21 @@ public class player_Component : MonoBehaviour
     {
         isPlayingGame = true;
         GameNo++;
+        DodgeEthos.GetComponent<dodgeGame>().ResetGame();
+        DodgeEthos.SetActive(true);
     }
     public void PlayPathos()
     {
         isPlayingGame = true;
         GameNo++;
+        SpamPathos.GetComponentInChildren<CatchGame>().ResetGame();
         SpamPathos.SetActive(true);
     }
     public void PlayLogos()
     {
         isPlayingGame = true;
         GameNo++;
+        IncantorumLogos.GetComponent<Incantorum>().ResetGame();
+        IncantorumLogos.SetActive(true);
     }
 }
