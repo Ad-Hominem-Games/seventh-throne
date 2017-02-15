@@ -16,7 +16,7 @@ public class SpamGame : MonoBehaviour {
         this.transform.position -= new Vector3(0, 0.75f);
         if (Input.GetKeyDown(KeyCode.X))
         {
-            this.transform.position += new Vector3(0, 15);
+            this.transform.position = new Vector3(0, 15);
         }
         if (this.transform.localPosition.y < -140)
         {
