@@ -24,7 +24,7 @@ public class player_Component : MonoBehaviour
     public int Combo = 0;
     public GameObject SpamPathos;
     public GameObject DodgeEthos;
-    public GameObject IncantorumLogos;
+    public GameObject JumpLogos;
 
     // Use this for initialization
     void Start()
@@ -100,7 +100,7 @@ public class player_Component : MonoBehaviour
         OpinionFill.fillAmount += GameNo * Combo * 0.005f;
         SpamPathos.SetActive(false);
         DodgeEthos.SetActive(false);
-        IncantorumLogos.SetActive(false);
+        JumpLogos.SetActive(false);
             ethosSymbol.SetActive(false);
             pathosSymbol.SetActive(false);
             logosSymbol.SetActive(false);
@@ -155,7 +155,7 @@ public class player_Component : MonoBehaviour
     {
         isPlayingGame = true;
         GameNo++;
-        IncantorumLogos.GetComponent<Incantorum>().ResetGame();
-        IncantorumLogos.SetActive(true);
+        JumpLogos.GetComponent<JumpGame>().ResetGame();
+        JumpLogos.SetActive(true);
     }
 }

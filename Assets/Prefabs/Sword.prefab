@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 114758751292502728}
   - component: {fileID: 61608799163183080}
   - component: {fileID: 50409104561879238}
+  - component: {fileID: 114357445084777560}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,6 +65,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &114357445084777560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209697668193184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37e00dd4f1141446ae7c2dc004e8203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114758751292502728
 MonoBehaviour:
   m_ObjectHideFlags: 1
