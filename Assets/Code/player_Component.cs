@@ -97,7 +97,26 @@ public class player_Component : MonoBehaviour
 
     public void EndPoint()
     {
+        //damage to opinion
         OpinionFill.fillAmount += GameNo * Combo * 0.005f;
+
+        //pathos->logos->ethos
+        /*if (current game (ie, the point just ended) -> other player current game
+                           (if they are making one, activeSelf))
+              { other player's minigame becomes harder, 
+                proportional to strength of argument
+              }
+        */
+        /* make a current game variable, only set to null at end of EndPoint()
+         * when EndPoint is called, it checks said current game
+         * then, see what other game is active (get component, set to a local variable)
+         * then a switch on that. as in, switch on current game, each case offers
+         * results for if super effective.
+         * then, write the effects the game has
+         * potentially sway screen, invert colors, flip upside down, etc)
+        */
+
+        //set everything back to zero
         SpamPathos.SetActive(false);
         DodgeEthos.SetActive(false);
         IncantorumLogos.SetActive(false);

@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &188316337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -479,9 +479,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 273491179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1451ee451585bf34fa0099ea3af715ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 19a02c2bcc0f1314c8f3d340eabae0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: 
+  OpinionFill: {fileID: 1198508941}
+  ComposureBar: {fileID: 1196862331}
+  madeMistake: 0
+  isPlayingGame: 0
+  ethosSymbol: {fileID: 1783307442}
+  pathosSymbol: {fileID: 631755923}
+  logosSymbol: {fileID: 1498315413}
+  GameNo: 0
+  BalloonOne: {fileID: 1047703370}
+  BalloonTwo: {fileID: 795628156}
+  BalloonThree: {fileID: 419684881}
+  BalloonFour: {fileID: 40578758}
+  BalloonFive: {fileID: 498878324}
+  BalloonSix: {fileID: 1366465830}
+  Combo: 0
+  SpamPathos: {fileID: 0}
+  DodgeEthos: {fileID: 0}
+  IncantorumLogos: {fileID: 0}
 --- !u!1 &299193882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,9 +1532,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 737105310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98ddc791be6561e43aa69135b26070ad, type: 3}
+  m_Script: {fileID: 11500000, guid: ba5449b524cb8db4889b7cdb1599d4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 0}
 --- !u!61 &737105315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1826,7 +1846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bedb9125c11ecb419963627b97e4367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 847152939}
   move: 2
 --- !u!1 &1047703370
 GameObject:
@@ -2186,7 +2206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1319246621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2247,9 +2267,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1319246620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66546ad49f4d23844a845fc396af34fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 77d57de9edf859340bfe841210e20228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  block: {fileID: 1736296762758360, guid: 08a2bcf9d0d456941aa379094137e795, type: 2}
+  Spawntime: 0
+  SpawnRate: 2
+  WinTime: 4
 --- !u!1 &1366465830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,9 +2888,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1696651483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5727d591d51a3a84183c3e17b37032fc, type: 3}
+  m_Script: {fileID: 11500000, guid: e78f754f18490724192cc27e4b73a961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1696651483}
+  Background: {fileID: 735109555}
 --- !u!114 &1696651486
 MonoBehaviour:
   m_ObjectHideFlags: 0
