@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e846ddec03c1a43a45ee585fb8a7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1476915731}
+  player: {fileID: 1336329886230656, guid: 288f9ef422fd5034aa1f9b91ff0827f4, type: 2}
   sword: {fileID: 1209697668193184, guid: 3e28fe38102c6434b8c7f0556a3e9fbe, type: 2}
   TimeBar: {fileID: 1830477647}
   Spawntime: 0
@@ -2281,7 +2281,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e6cb1a66600f59a42be6a2ce0b23befc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4b5e9ab1b757db478f241c5fd9d3ce2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2601,7 +2601,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e6cb1a66600f59a42be6a2ce0b23befc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4b5e9ab1b757db478f241c5fd9d3ce2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3059,7 +3059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fc5a8599f83cb4fa0e59f38eaf7523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 0}
+  Parent: {fileID: 69144488}
 --- !u!114 &1476915734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3315,6 +3315,7 @@ GameObject:
   - component: {fileID: 1676672688}
   - component: {fileID: 1676672686}
   - component: {fileID: 1676672690}
+  - component: {fileID: 1676672687}
   m_Layer: 0
   m_Name: PlayerDodge
   m_TagString: Untagged
@@ -3354,6 +3355,26 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 10, y: 10}
+--- !u!50 &1676672687
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676672684}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &1676672688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3904,7 +3925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d57de9edf859340bfe841210e20228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1676672684}
+  player: {fileID: 1336329886230656, guid: 288f9ef422fd5034aa1f9b91ff0827f4, type: 2}
   Bolt: {fileID: 1736296762758360, guid: 08a2bcf9d0d456941aa379094137e795, type: 2}
   TimeBar: {fileID: 1479844434}
   Spawntime: 0

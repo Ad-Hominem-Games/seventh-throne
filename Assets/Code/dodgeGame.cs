@@ -58,6 +58,7 @@ public class dodgeGame : MonoBehaviour {
 
     public void ResetGame()
     {
+        print(player);
         WinTime = Time.time + 10f;
         SpawnRate = 0.5f - player.GetComponent<player_Component>().GameNo * .05f;
         foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())

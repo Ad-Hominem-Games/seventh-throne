@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &188316337
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1319246621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2270,10 +2270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d57de9edf859340bfe841210e20228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 1736296762758360, guid: 08a2bcf9d0d456941aa379094137e795, type: 2}
+  player: {fileID: 0}
+  Bolt: {fileID: 0}
+  TimeBar: {fileID: 0}
   Spawntime: 0
   SpawnRate: 2
   WinTime: 4
+  spawngoal: 0
+  currentspawn: 0
 --- !u!1 &1366465830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,8 +2895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78f754f18490724192cc27e4b73a961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1696651483}
-  Background: {fileID: 735109555}
 --- !u!114 &1696651486
 MonoBehaviour:
   m_ObjectHideFlags: 0
