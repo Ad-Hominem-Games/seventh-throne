@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class dodgeGame : MonoBehaviour {
 
-    public GameObject block;
+    public GameObject player;
+    public GameObject Bolt;
+    public Image TimeBar;
     public float Spawntime;
-    public float SpawnRate = 2f;
-    public float WinTime = 4f;
+    public float SpawnRate = 0.5f;
+    public float WinTime;
+    public float spawngoal;
+    public float currentspawn;
 
     // Use this for initialization
     void Start()
     {
         Spawntime = Time.time + 1f;
-
+        WinTime += Time.time;
     }
 
     // Update is called once per frame
@@ -23,50 +27,43 @@ public class dodgeGame : MonoBehaviour {
 
         if (Time.time > Spawntime)
         {
-            spawnBlock();
+            spawnBolt();
         }
 
-        if (Time.time > WinTime && SpawnRate > 0.15f)
+        if (Time.time > WinTime)
         {
-            WinTime = Time.time + 2f;
-            //GetComponentInParent<player_Component>().GameNo++;
-            Reset();
+            ResetGame();
+            player.GetComponent<player_Component>().Combo++;
+            player.GetComponent<player_Component>().PlayPathos();
 
         }
-
+        TimeBar.fillAmount = (WinTime - Time.time) / 10f;
     }
 
-    public void spawnBlock()
+    public void spawnBolt()
     {
 
-        Instantiate(block, this.gameObject.transform);
+        Instantiate(Bolt, this.gameObject.transform);
         Spawntime = Time.time + SpawnRate;
 
     }
 
     public void lostGame()
     {
-        //composure--;
-        foreach (DodgeThis block in GetComponentsInChildren<DodgeThis>())
-        {
-            Destroy(block.gameObject);
-        }
-        spawnBlock();
-        if (SpawnRate > 0.15f)
-        {
-            Reset();
-        }
+        player.GetComponent<player_Component>().madeMistake = true;
+        ResetGame();
+        player.GetComponent<player_Component>().PlayEthos();
 
-    }
-
-    public void Reset()
-    {
-        print("I Reset!");
-        SpawnRate -= 0.1f;
     }
 
     public void ResetGame()
     {
-        SpawnRate = 2f;
+        WinTime = Time.time + 10f;
+        SpawnRate = 0.5f - player.GetComponent<player_Component>().GameNo * .05f;
+        foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
+        {
+            Destroy(bolt.gameObject);
+        }
+        this.gameObject.SetActive(false);
     }
 }

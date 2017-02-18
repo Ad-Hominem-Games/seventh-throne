@@ -168,7 +168,6 @@ public class player_Component : MonoBehaviour
     {
         isPlayingGame = true;
         GameNo++;
-        SpamPathos.GetComponentInChildren<CatchGame>().ResetGame();
         SpamPathos.SetActive(true);
     }
     public void PlayLogos()
