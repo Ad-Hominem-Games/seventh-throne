@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61608799163183080}
   - component: {fileID: 50409104561879238}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

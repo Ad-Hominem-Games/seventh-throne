@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 224720515326182596}
   - component: {fileID: 222172251159582406}
   - component: {fileID: 114326907943903484}
-  - component: {fileID: 114046560942692402}
   - component: {fileID: 61254326237252060}
+  - component: {fileID: 114465247569547798}
   m_Layer: 0
   m_Name: DodgeObject
   m_TagString: Untagged
@@ -44,18 +44,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &114046560942692402
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1736296762758360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5449b524cb8db4889b7cdb1599d4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Parent: {fileID: 1336329886230656, guid: 288f9ef422fd5034aa1f9b91ff0827f4, type: 2}
 --- !u!114 &114326907943903484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,6 +71,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114465247569547798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736296762758360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aade96199153bb4fb311a5c1390cf16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222172251159582406
 CanvasRenderer:
   m_ObjectHideFlags: 1
