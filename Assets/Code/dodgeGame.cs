@@ -50,6 +50,8 @@ public class dodgeGame : MonoBehaviour {
 
     public void lostGame()
     {
+        print(player);
+        print(player.GetComponent("Player_Component") as player_Component);
         player.GetComponent<player_Component>().madeMistake = true;
         ResetGame();
         player.GetComponent<player_Component>().PlayEthos();
@@ -58,7 +60,7 @@ public class dodgeGame : MonoBehaviour {
 
     public void ResetGame()
     {
-        print(player);
+        print(player.GetComponent(typeof(player_Component)) as player_Component);
         WinTime = Time.time + 10f;
         SpawnRate = 0.5f - player.GetComponent<player_Component>().GameNo * .05f;
         foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())

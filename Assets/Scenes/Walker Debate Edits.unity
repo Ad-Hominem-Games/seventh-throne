@@ -2541,7 +2541,7 @@ MonoBehaviour:
   Combo: 0
   SpamPathos: {fileID: 69144488}
   DodgeEthos: {fileID: 1960775261}
-  IncantorumLogos: {fileID: 0}
+  IncantorumLogos: {fileID: 262430964}
 --- !u!4 &1127871729 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4575577932715900, guid: 288f9ef422fd5034aa1f9b91ff0827f4,
