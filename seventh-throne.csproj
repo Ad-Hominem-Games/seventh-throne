@@ -87,6 +87,7 @@
     <Compile Include="Assets\Code\StartGameButton.cs" />
     <Compile Include="Assets\Code\dodgeGame.cs" />
     <Compile Include="Assets\Code\games.cs" />
+    <Compile Include="Assets\Code\player2Component.cs" />
     <Compile Include="Assets\Code\player_Component.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
