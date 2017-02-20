@@ -6,6 +6,8 @@ TagManager:
   tags:
   - speech
   - symbol
+  - speech2
+  - symbol2
   layers:
   - Default
   - TransparentFX

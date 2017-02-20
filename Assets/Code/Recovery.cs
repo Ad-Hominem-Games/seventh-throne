@@ -18,7 +18,7 @@ public class Recovery : MonoBehaviour {
         {
             move = 1;
         }
-        if (this.transform.localPosition.y <= -135)
+        if (this.transform.localPosition.y <= -130)
         {
             move = 2;
         }
@@ -33,7 +33,7 @@ public class Recovery : MonoBehaviour {
         }
         //try a switch instead (1 or 2, motion changes based on which one
         
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             if (this.transform.localPosition.y < 90 &&
                 this.transform.localPosition.y > 60)
@@ -45,6 +45,7 @@ public class Recovery : MonoBehaviour {
 
     public void CalmDown()
     {
+        Debug.Log(player.GetComponent<player_Component>());
         player.GetComponent<player_Component>().ComposureBar.fillAmount += 0.1f;
     }
 }

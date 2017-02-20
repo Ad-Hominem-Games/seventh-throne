@@ -25,6 +25,7 @@ public class player_Component : MonoBehaviour
     public GameObject SpamPathos;
     public GameObject DodgeEthos;
     public GameObject IncantorumLogos;
+    public GameObject Recovery;
 
     // Use this for initialization
     void Start()
@@ -77,6 +78,10 @@ public class player_Component : MonoBehaviour
                     PlayEthos();
                     //start an ethos minigame
                     break;
+
+                case "v":   //recover
+                    PlayRecover();
+                    break;
             }
         }
         SetBubble();
@@ -115,11 +120,22 @@ public class player_Component : MonoBehaviour
          * then, write the effects the game has
          * potentially sway screen, invert colors, flip upside down, etc)
         */
+        /*foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech"))
+        {
+            bubble.SetActive(false);
+        }
+        */
+        /*foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol"))
+        {
+            symbol.SetActive(false);
+        }
+        */
 
         //set everything back to zero
         SpamPathos.SetActive(false);
         DodgeEthos.SetActive(false);
         IncantorumLogos.SetActive(false);
+        Recovery.SetActive(false);
             ethosSymbol.SetActive(false);
             pathosSymbol.SetActive(false);
             logosSymbol.SetActive(false);
@@ -161,14 +177,16 @@ public class player_Component : MonoBehaviour
     {
         isPlayingGame = true;
         GameNo++;
-        DodgeEthos.GetComponent<dodgeGame>().ResetGame();
+        //DodgeEthos.GetComponent<dodgeGame>().ResetGame();
         DodgeEthos.SetActive(true);
+        ethosSymbol.SetActive(true);
     }
     public void PlayPathos()
     {
         isPlayingGame = true;
         GameNo++;
         SpamPathos.SetActive(true);
+        pathosSymbol.SetActive(true);
     }
     public void PlayLogos()
     {
@@ -176,5 +194,10 @@ public class player_Component : MonoBehaviour
         GameNo++;
         //IncantorumLogos.GetComponent<Incantorum>().ResetGame();
         //IncantorumLogos.SetActive(true);
+    }
+    public void PlayRecover()
+    {
+        isPlayingGame = true;
+        Recovery.SetActive(true);
     }
 }
