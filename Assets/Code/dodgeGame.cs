@@ -34,7 +34,7 @@ public class dodgeGame : MonoBehaviour {
         {
             ResetGame();
             player.GetComponent<player_Component>().Combo++;
-            player.GetComponent<player_Component>().PlayPathos();
+            player.GetComponent<player_Component>().PlayEthos();
 
         }
         TimeBar.fillAmount = (WinTime - Time.time) / 10f;
