@@ -49,7 +49,7 @@ public class player2Component : MonoBehaviour {
 
         //different argument types (points)
         input = Input.inputString;
-        if (isPlayingGame == true && Input.GetKeyDown(KeyCode.Space))
+        if (isPlayingGame == true && Input.GetKeyDown(KeyCode.H))
         {
             isPlayingGame = false;
             EndPoint();
@@ -86,13 +86,13 @@ public class player2Component : MonoBehaviour {
 
     public void gaffe()
     {
-        if (OpinionFill.fillAmount <= 0.025f)
+        if (OpinionFill.fillAmount <= 0.05f)
         {
             OpinionFill.fillAmount = 0.0f;
         }
         else
         {
-            OpinionFill.fillAmount -= 0.025f;
+            OpinionFill.fillAmount -= 0.05f;
         }
         ComposureBar.fillAmount = 1.0f;
     }
@@ -117,31 +117,22 @@ public class player2Component : MonoBehaviour {
          * then, write the effects the game has
          * potentially sway screen, invert colors, flip upside down, etc)
         */
-        /*foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech2"))
+        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech2"))
         {
             bubble.SetActive(false);
         }
-        */
-        /*foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol2"))
+        
+        foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol2"))
         {
             symbol.SetActive(false);
         }
-        */
+        
 
         //set everything back to zero
         SpamPathos.SetActive(false);
         DodgeEthos.SetActive(false);
         IncantorumLogos.SetActive(false);
         Recovery.SetActive(false);
-        ethosSymbol.SetActive(false);
-        pathosSymbol.SetActive(false);
-        logosSymbol.SetActive(false);
-        BalloonOne.SetActive(false);
-        BalloonTwo.SetActive(false);
-        BalloonThree.SetActive(false);
-        BalloonFour.SetActive(false);
-        BalloonFive.SetActive(false);
-        BalloonSix.SetActive(false);
         GameNo = 0;
         Combo = 0;
     }
@@ -182,6 +173,7 @@ public class player2Component : MonoBehaviour {
     {
         isPlayingGame = true;
         GameNo++;
+        SpamPathos.GetComponent<CatchGame>().ResetGame();
         SpamPathos.SetActive(true);
         pathosSymbol.SetActive(true);
     }

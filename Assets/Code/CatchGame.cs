@@ -10,7 +10,7 @@ public class CatchGame : MonoBehaviour
     public GameObject sword;
     public Image TimeBar;
     public float Spawntime;
-    public float SpawnRate = 0.3f;
+    public float SpawnRate = 0.15f;
     public float WinTime;
     public float spawngoal;
     public float currentspawn;
@@ -35,8 +35,16 @@ public class CatchGame : MonoBehaviour
         if (Time.time > WinTime)
         {
             ResetGame();
-            player.GetComponent<player_Component>().Combo++;
-            player.GetComponent<player_Component>().PlayPathos();
+            if (player.GetComponent<player_Component>() != null)
+            {
+                player.GetComponent<player_Component>().Combo++;
+                player.GetComponent<player_Component>().PlayPathos();
+            }
+            if (player.GetComponent<player2Component>() != null)
+            {
+                player.GetComponent<player2Component>().Combo++;
+                player.GetComponent<player2Component>().PlayPathos();
+            }
 
         }
         TimeBar.fillAmount = (WinTime - Time.time) / 10f;
@@ -52,20 +60,41 @@ public class CatchGame : MonoBehaviour
 
     public void lostGame()
     {
-        player.GetComponent<player_Component>().madeMistake = true;
-        ResetGame();
-        player.GetComponent<player_Component>().PlayPathos();
-
+        if (player.GetComponent<player_Component>() != null)
+        {
+            player.GetComponent<player_Component>().madeMistake = true;
+            ResetGame();
+            player.GetComponent<player_Component>().PlayPathos();
+        }
+        if (player.GetComponent<player2Component>() != null)
+        {
+            player.GetComponent<player2Component>().madeMistake = true;
+            ResetGame();
+            player.GetComponent<player2Component>().PlayPathos();
+        }
     }
 
     public void ResetGame()
     {
-        WinTime = Time.time + 10f;
-        SpawnRate = 0.15f - player.GetComponent<player_Component>().GameNo * .005f;
-        foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
+        if (player.GetComponent<player_Component>() != null)
         {
-            Destroy(sword.gameObject);
+            WinTime = Time.time + 10f;
+            SpawnRate = 0.15f - player.GetComponent<player_Component>().GameNo * .005f;
+            foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
+            {
+                Destroy(sword.gameObject);
+            }
+            this.gameObject.SetActive(false);
         }
-        this.gameObject.SetActive(false);
+        if (player.GetComponent<player2Component>() != null)
+        {
+            WinTime = Time.time + 10f;
+            SpawnRate = 0.15f - player.GetComponent<player2Component>().GameNo * .005f;
+            foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
+            {
+                Destroy(sword.gameObject);
+            }
+            this.gameObject.SetActive(false);
+        }
     }
 }

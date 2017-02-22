@@ -31,21 +31,41 @@ public class Recovery : MonoBehaviour {
                 this.transform.position += new Vector3(0, 10);
                 break;
         }
-        //try a switch instead (1 or 2, motion changes based on which one
         
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (this.transform.localPosition.y < 90 &&
-                this.transform.localPosition.y > 60)
+            if (player.GetComponent<player_Component>() != null)
             {
-                CalmDown();
+
+                if (this.transform.localPosition.y < 90 &&
+                    this.transform.localPosition.y > 60)
+                {
+                    CalmDown();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (player.GetComponent<player2Component>() != null)
+            {
+                if (this.transform.localPosition.y < 90 &&
+                    this.transform.localPosition.y > 60)
+                {
+                    CalmDown();
+                }
             }
         }
 	}
 
     public void CalmDown()
     {
-        Debug.Log(player.GetComponent<player_Component>());
-        player.GetComponent<player_Component>().ComposureBar.fillAmount += 0.1f;
+        if (player.GetComponent<player_Component>() != null)
+        {
+            player.GetComponent<player_Component>().ComposureBar.fillAmount += 0.1f;
+        }
+        if (player.GetComponent<player2Component>() != null)
+        {
+            player.GetComponent<player2Component>().ComposureBar.fillAmount += 0.1f;
+        }
     }
 }

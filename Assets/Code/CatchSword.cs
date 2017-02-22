@@ -6,7 +6,6 @@ public class CatchSword : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log(GetComponentInParent<CatchGame>().currentspawn);
         float temp = GetComponentInParent<CatchGame>().currentspawn;
         float goal = GetComponentInParent<CatchGame>().spawngoal;
         temp += Random.Range(2, 5) * Mathf.Sign(goal - temp);

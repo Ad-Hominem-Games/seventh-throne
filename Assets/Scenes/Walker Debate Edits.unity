@@ -387,7 +387,7 @@ MonoBehaviour:
   sword: {fileID: 1209697668193184, guid: 3e28fe38102c6434b8c7f0556a3e9fbe, type: 2}
   TimeBar: {fileID: 1830477647}
   Spawntime: 0
-  SpawnRate: 0.3
+  SpawnRate: 0.15
   WinTime: 0
   spawngoal: 0
   currentspawn: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press S!
+  m_Text: Press L!
 --- !u!222 &128952260
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6619,7 +6619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bedb9125c11ecb419963627b97e4367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1957040807530538, guid: bdf4ef9955bd319479af1839c58e2b9a, type: 2}
+  player: {fileID: 1065251030}
   move: 2
 --- !u!114 &1823975049
 MonoBehaviour:
@@ -6844,7 +6844,7 @@ MonoBehaviour:
   sword: {fileID: 1209697668193184, guid: 3e28fe38102c6434b8c7f0556a3e9fbe, type: 2}
   TimeBar: {fileID: 1445409227}
   Spawntime: 0
-  SpawnRate: 0.3
+  SpawnRate: 0.15
   WinTime: 0
   spawngoal: 0
   currentspawn: 0

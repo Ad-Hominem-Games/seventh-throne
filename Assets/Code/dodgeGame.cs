@@ -33,8 +33,16 @@ public class dodgeGame : MonoBehaviour {
         if (Time.time > WinTime)
         {
             ResetGame();
-            player.GetComponent<player_Component>().Combo++;
-            player.GetComponent<player_Component>().PlayEthos();
+            if (player.GetComponent<player_Component>() != null)
+            {
+                player.GetComponent<player_Component>().Combo++;
+                player.GetComponent<player_Component>().PlayEthos();
+            }
+            if (player.GetComponent<player2Component>() != null)
+            {
+                player.GetComponent<player2Component>().Combo++;
+                player.GetComponent<player2Component>().PlayEthos();
+            }
 
         }
         TimeBar.fillAmount = (WinTime - Time.time) / 10f;
@@ -50,21 +58,41 @@ public class dodgeGame : MonoBehaviour {
 
     public void lostGame()
     {
-        player.GetComponent<player_Component>().madeMistake = true;
-        ResetGame();
-        player.GetComponent<player_Component>().PlayEthos();
-
+        if (player.GetComponent<player_Component>() != null)
+        {
+            player.GetComponent<player_Component>().madeMistake = true;
+            ResetGame();
+            player.GetComponent<player_Component>().PlayEthos();
+        }
+        if (player.GetComponent<player2Component>() != null)
+        {
+            player.GetComponent<player2Component>().madeMistake = true;
+            ResetGame();
+            player.GetComponent<player2Component>().PlayEthos();
+        }
     }
 
     public void ResetGame()
     {
-        print(player);
-        WinTime = Time.time + 10f;
-        SpawnRate = 0.5f - player.GetComponent<player_Component>().GameNo * .05f;
-        foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
+        if (player.GetComponent<player_Component>() != null)
         {
-            Destroy(bolt.gameObject);
+            WinTime = Time.time + 10f;
+            SpawnRate = 0.5f - player.GetComponent<player_Component>().GameNo * 0.05f;
+            foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
+            {
+                Destroy(bolt.gameObject);
+            }
+            this.gameObject.SetActive(false);
         }
-        this.gameObject.SetActive(false);
+        if (player.GetComponent<player2Component>() != null)
+        {
+            WinTime = Time.time + 10f;
+            SpawnRate = 0.5f - player.GetComponent<player2Component>().GameNo * .05f;
+            foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
+            {
+                Destroy(bolt.gameObject);
+            }
+            this.gameObject.SetActive(false);
+        }
     }
 }
