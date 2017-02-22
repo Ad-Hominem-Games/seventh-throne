@@ -8,6 +8,8 @@ TagManager:
   - symbol
   - speech2
   - symbol2
+  - game
+  - game2
   layers:
   - Default
   - TransparentFX

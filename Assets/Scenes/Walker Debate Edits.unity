@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 20444464}
   m_Layer: 0
   m_Name: RecoverBackground
-  m_TagString: Untagged
+  m_TagString: game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 69144492}
   m_Layer: 0
   m_Name: StopBackground
-  m_TagString: Untagged
+  m_TagString: game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 262430966}
   m_Layer: 0
   m_Name: IncantorumBackground
-  m_TagString: Untagged
+  m_TagString: game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3084,7 +3084,7 @@ GameObject:
   - component: {fileID: 565390729}
   m_Layer: 0
   m_Name: IncantorumBackground2
-  m_TagString: Untagged
+  m_TagString: game2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3641,7 +3641,7 @@ GameObject:
   - component: {fileID: 808470688}
   m_Layer: 0
   m_Name: RecoverBackground2
-  m_TagString: Untagged
+  m_TagString: game2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4465,6 +4465,8 @@ MonoBehaviour:
   DodgeEthos: {fileID: 1960775261}
   IncantorumLogos: {fileID: 262430964}
   Recovery: {fileID: 20444462}
+  currentGame: {fileID: 0}
+  gameType: 0
 --- !u!4 &1127871729 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4575577932715900, guid: 288f9ef422fd5034aa1f9b91ff0827f4,
@@ -5262,7 +5264,7 @@ GameObject:
   - component: {fileID: 1403622405}
   m_Layer: 0
   m_Name: DodgeBackground2
-  m_TagString: Untagged
+  m_TagString: game2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6803,7 +6805,7 @@ GameObject:
   - component: {fileID: 1848456815}
   m_Layer: 0
   m_Name: StopBackground2
-  m_TagString: Untagged
+  m_TagString: game2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7337,7 +7339,7 @@ GameObject:
   - component: {fileID: 1960775262}
   m_Layer: 0
   m_Name: DodgeBackground
-  m_TagString: Untagged
+  m_TagString: game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

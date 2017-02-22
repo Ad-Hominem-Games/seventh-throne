@@ -25,6 +25,7 @@ public class player2Component : MonoBehaviour {
     public GameObject DodgeEthos;
     public GameObject IncantorumLogos;
     public GameObject Recovery;
+    public int positionPiece;
 
     // Use this for initialization
     void Start () {
@@ -189,5 +190,30 @@ public class player2Component : MonoBehaviour {
         isPlayingGame = true;
         Recovery.SetActive(true);
 
+    }
+
+    //being attacked
+    public void Hurting()
+    {
+        if (this.SpamPathos.activeSelf == true)
+        {
+            if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x <= 61)
+            {
+                positionPiece = 1;
+            }
+            if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x >= 301)
+            {
+                positionPiece = 2;
+            }
+            switch (positionPiece)
+            {
+                case 1:
+                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(3f, 0);
+                    break;
+                case 2:
+                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(3f, 0);
+                    break;
+            }
+        }
     }
 }

@@ -26,6 +26,9 @@ public class player_Component : MonoBehaviour
     public GameObject DodgeEthos;
     public GameObject IncantorumLogos;
     public GameObject Recovery;
+    public GameObject currentGame;
+    public GameObject opponentGame;
+    public int gameType;
 
     // Use this for initialization
     void Start()
@@ -85,6 +88,13 @@ public class player_Component : MonoBehaviour
             }
         }
         SetBubble();
+
+        //attacks
+        if (GameObject.FindGameObjectsWithTag("game") != null)
+        {
+            currentGame = GameObject.FindGameObjectWithTag("game");
+            Attacks();
+        }
     }
 
     public void gaffe()
@@ -187,5 +197,46 @@ public class player_Component : MonoBehaviour
     {
         isPlayingGame = true;
         Recovery.SetActive(true);
+    }
+
+    public void Attacks()
+    {
+        if (currentGame == DodgeEthos)
+        {
+            gameType = 1;
+        }
+        else if (currentGame == SpamPathos)
+        {
+            gameType = 2;
+        }
+        else if (currentGame == logosSymbol /*need to change later*/)
+        {
+            gameType = 3;
+        }
+        if (GameObject.FindGameObjectWithTag("game2") != null)
+        {
+            opponentGame = GameObject.FindGameObjectWithTag("game2");
+            switch (gameType)
+            {
+                case 1:
+                    if (opponentGame.GetComponent<CatchGame>() != null)
+                    {
+                        opponentGame.GetComponent<CatchGame>().player.GetComponent<player2Component>().Hurting();
+                    }
+                    break;
+                case 2:
+                    if (GetComponent<player2Component>().IncantorumLogos.activeSelf == true)
+                    {
+                        GetComponent<player2Component>().Hurting();
+                    }
+                    break;
+                case 3:
+                    if (GetComponent<player2Component>().DodgeEthos.activeSelf == true)
+                    {
+                        GetComponent<player2Component>().Hurting();
+                    }
+                    break;
+            }
+        }
     }
 }
