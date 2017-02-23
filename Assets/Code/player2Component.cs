@@ -208,10 +208,10 @@ public class player2Component : MonoBehaviour {
             switch (positionPiece)
             {
                 case 1:
-                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(3f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(5f, 0);
                     break;
                 case 2:
-                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(3f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(5f, 0);
                     break;
             }
         }
