@@ -56,8 +56,11 @@
      <Compile Include="Assets\Code\JumpPlayer.cs" />
      <Compile Include="Assets\Code\Recovery.cs" />
      <Compile Include="Assets\Code\StartGameButton.cs" />
+     <Compile Include="Assets\Code\TopicWeb.cs" />
+     <Compile Include="Assets\Code\TopicWebNode.cs" />
      <Compile Include="Assets\Code\dodgeGame.cs" />
      <Compile Include="Assets\Code\games.cs" />
+     <Compile Include="Assets\Code\player2Component.cs" />
      <Compile Include="Assets\Code\player_Component.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
