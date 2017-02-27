@@ -32,6 +32,8 @@ public class player_Component : MonoBehaviour
     public int boardShift;
     public int whatMess;
     public bool upsidedown = false;
+    public float timeLeft = 60;
+    public int matchNo = 0;
 
     // Use this for initialization
     void Start()
@@ -97,6 +99,13 @@ public class player_Component : MonoBehaviour
         {
             currentGame = GameObject.FindGameObjectWithTag("game");
             Attacks();
+        }
+
+        //countdown
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0)
+        {
+            GameOver();
         }
     }
 
@@ -344,5 +353,21 @@ public class player_Component : MonoBehaviour
                 IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
         }
+    }
+
+    //end state
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+        //trigger one of Drew's nodes
+        matchNo++;
+        if (matchNo > 3)
+        {
+            SetOver();
+        }
+    }
+    public void SetOver()
+    {
+
     }
 }
