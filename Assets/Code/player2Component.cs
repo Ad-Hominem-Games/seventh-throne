@@ -25,7 +25,12 @@ public class player2Component : MonoBehaviour {
     public GameObject DodgeEthos;
     public GameObject IncantorumLogos;
     public GameObject Recovery;
-    public int positionPiece;
+    public GameObject currentGame;
+    public GameObject opponentGame;
+    public int gameType;
+    public int boardShift;
+    public int whatMess;
+    public bool upsidedown;
 
     // Use this for initialization
     void Start () {
@@ -83,7 +88,14 @@ public class player2Component : MonoBehaviour {
             }
         }
         SetBubble();
-	}
+
+        //attacks
+        if (GameObject.FindGameObjectsWithTag("game2") != null)
+        {
+            currentGame = GameObject.FindGameObjectWithTag("game2");
+            Attacks();
+        }
+    }
 
     public void gaffe()
     {
@@ -104,20 +116,7 @@ public class player2Component : MonoBehaviour {
         OpinionFill.fillAmount += GameNo * Combo * 0.005f;
 
         //pathos->logos->ethos
-        /*if (current game (ie, the point just ended) -> other player current game
-                           (if they are making one, activeSelf))
-              { other player's minigame becomes harder, 
-                proportional to strength of argument
-              }
-        */
-        /* make a current game variable, only set to null at end of EndPoint()
-         * when EndPoint is called, it checks said current game
-         * then, see what other game is active (get component, set to a local variable)
-         * then a switch on that. as in, switch on current game, each case offers
-         * results for if super effective.
-         * then, write the effects the game has
-         * potentially sway screen, invert colors, flip upside down, etc)
-        */
+
         foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech2"))
         {
             bubble.SetActive(false);
@@ -192,27 +191,159 @@ public class player2Component : MonoBehaviour {
 
     }
 
-    //being attacked
+    //attacking
+    public void Attacks()
+    {
+        if (currentGame == DodgeEthos)
+        {
+            gameType = 1;
+        }
+        else if (currentGame == SpamPathos)
+        {
+            gameType = 2;
+        }
+        else if (currentGame == IncantorumLogos)
+        {
+            gameType = 3;
+        }
+        if (GameObject.FindGameObjectWithTag("game") != null)
+        {
+            opponentGame = GameObject.FindGameObjectWithTag("game");
+            switch (gameType)
+            {
+                case 1:
+                    if (opponentGame.GetComponent<CatchGame>() != null)
+                    {
+                        opponentGame.GetComponent<CatchGame>().player.GetComponent<player_Component>().Flip();
+                    }
+                    break;
+                case 2:
+                    if (GetComponent<player_Component>().IncantorumLogos.activeSelf == true)
+                    {
+                        GetComponent<player_Component>().Shift();
+                    }
+                    break;
+                case 3:
+                    if (GetComponent<player_Component>().DodgeEthos.activeSelf == true)
+                    {
+                        GetComponent<player_Component>().Shift();
+                    }
+                    break;
+            }
+        }
+    }
+
+    //game screw up catch-all
     public void Hurting()
+    {
+        //wacky business:
+        //move screen from side to side
+        //flip upside down
+        //flip/reverse?
+        whatMess = Random.Range(1, 4);
+        switch (whatMess)
+        {
+            case 1:
+                Shift();
+                break;
+            case 2:
+                Flip();
+                break;
+            case 3:
+                //some other screwup
+                break;
+        }
+    }
+
+    //being attacked
+    public void Shift()
     {
         if (this.SpamPathos.activeSelf == true)
         {
             if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x <= 61)
             {
-                positionPiece = 1;
+                boardShift = 1;
             }
             if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x >= 301)
             {
-                positionPiece = 2;
+                boardShift = 2;
             }
-            switch (positionPiece)
+            switch (boardShift)
             {
                 case 1:
-                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(5f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(7f, 0);
                     break;
                 case 2:
-                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(5f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(7f, 0);
                     break;
+            }
+        }
+        if (this.DodgeEthos.activeSelf == true)
+        {
+            if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x <= 61)
+            {
+                boardShift = 1;
+            }
+            if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x >= 301)
+            {
+                boardShift = 2;
+            }
+            switch (boardShift)
+            {
+                case 1:
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position += new Vector3(7f, 0);
+                    break;
+                case 2:
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(7f, 0);
+                    break;
+            }
+        }
+        if (this.IncantorumLogos.activeSelf == true)
+        {
+            if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x <= 61)
+            {
+                boardShift = 1;
+            }
+            if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x >= 301)
+            {
+                boardShift = 2;
+            }
+            switch (boardShift)
+            {
+                case 1:
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(7f, 0);
+                    break;
+                case 2:
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position -= new Vector3(7f, 0);
+                    break;
+            }
+        }
+    }
+
+    public void Flip()
+    {
+        if (this.SpamPathos.activeSelf == true)
+        {
+            if (upsidedown == false)
+            {
+                upsidedown = true;
+                SpamPathos.GetComponent<CatchGame>().transform.Rotate(new Vector3(0, 0, 180));
+            }
+        }
+        if (this.DodgeEthos.activeSelf == true)
+        {
+            if (upsidedown == false)
+            {
+                upsidedown = true;
+                DodgeEthos.GetComponent<dodgeGame>().transform.Rotate(new Vector3(0, 0, 180));
+            }
+        }
+        if (this.IncantorumLogos.activeSelf == true)
+        {
+            if (upsidedown == false)
+            {
+                upsidedown = true;
+                IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
         }
     }

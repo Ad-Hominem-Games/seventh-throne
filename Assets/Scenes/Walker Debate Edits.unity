@@ -4291,7 +4291,10 @@ MonoBehaviour:
   DodgeEthos: {fileID: 1403622403}
   IncantorumLogos: {fileID: 262430964}
   Recovery: {fileID: 808470686}
-  positionPiece: 0
+  currentGame: {fileID: 0}
+  opponentGame: {fileID: 0}
+  gameType: 0
+  boardShift: 0
 --- !u!1 &1066716690
 GameObject:
   m_ObjectHideFlags: 0
@@ -4538,6 +4541,8 @@ MonoBehaviour:
   currentGame: {fileID: 0}
   opponentGame: {fileID: 0}
   gameType: 0
+  boardShift: 0
+  whatMess: 0
 --- !u!4 &1127871729 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4575577932715900, guid: 288f9ef422fd5034aa1f9b91ff0827f4,
@@ -7627,7 +7632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -61, y: 70}
+  m_AnchoredPosition: {x: -61.000015, y: 70.00001}
   m_SizeDelta: {x: 120, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1970162534

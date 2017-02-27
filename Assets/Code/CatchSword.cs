@@ -21,7 +21,7 @@ public class CatchSword : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.position -= new Vector3(0,4);
+        this.gameObject.transform.localPosition -= new Vector3(0,4);
 
         if (this.gameObject.transform.localPosition.y < -130)
         {
