@@ -130,13 +130,13 @@ public class player_Component : MonoBehaviour
          * then, write the effects the game has
          * potentially sway screen, invert colors, flip upside down, etc)
         */
-        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech"))
-        {
-            bubble.SetActive(false);
-        }
         foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol"))
         {
             symbol.SetActive(false);
+        }
+        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech"))
+        {
+            bubble.SetActive(false);
         }
 
         //set everything back to zero
