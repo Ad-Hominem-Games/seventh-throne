@@ -220,13 +220,13 @@ public class player_Component : MonoBehaviour
                 case 2:
                     if (GetComponent<player2Component>().IncantorumLogos.activeSelf == true)
                     {
-                        GetComponent<player2Component>().Shift();
+                        GetComponent<player2Component>().Spin();
                     }
                     break;
                 case 3:
                     if (GetComponent<player2Component>().DodgeEthos.activeSelf == true)
                     {
-                        GetComponent<player2Component>().Shift();
+                        GetComponent<player2Component>().Flip();
                     }
                     break;
             }
@@ -250,7 +250,7 @@ public class player_Component : MonoBehaviour
                 Flip();
                 break;
             case 3:
-                //some other screwup
+                Spin();
                 break;
         }
     }
@@ -327,6 +327,10 @@ public class player_Component : MonoBehaviour
             if (upsidedown == false)
             {
                 upsidedown = true;
+                if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x > -75)
+                {
+                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(30, 0, 0);
+                }
                 SpamPathos.GetComponent<CatchGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
         }
@@ -335,6 +339,10 @@ public class player_Component : MonoBehaviour
             if (upsidedown == false)
             {
                 upsidedown = true;
+                if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x > -75)
+                {
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(30, 0, 0);
+                }
                 DodgeEthos.GetComponent<dodgeGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
         }
@@ -343,8 +351,24 @@ public class player_Component : MonoBehaviour
             if (upsidedown == false)
             {
                 upsidedown = true;
+                if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x > -75)
+                {
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position -= new Vector3(30, 0, 0);
+                }
                 IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
+        }
+    }
+
+    public void Spin()
+    {
+        if (this.SpamPathos.activeSelf == true)
+        {
+            if (this.SpamPathos.GetComponent<CatchGame>().transform.localPosition.x >= -180)
+            {
+                this.SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(8, 0, 0);
+            }
+            this.SpamPathos.GetComponent<CatchGame>().transform.Rotate(new Vector3(0, 0, -0.5f));
         }
     }
 }

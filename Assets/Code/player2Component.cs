@@ -210,21 +210,21 @@ public class player2Component : MonoBehaviour {
             switch (gameType)
             {
                 case 1:
-                    if (opponentGame.GetComponent<CatchGame>() != null)
+                    if (opponentGame.GetComponent<dodgeGame>() != null)
                     {
-                        opponentGame.GetComponent<CatchGame>().player.GetComponent<player_Component>().Shift();
+                        opponentGame.GetComponent<dodgeGame>().player.GetComponent<player_Component>().Flip();
                     }
                     break;
                 case 2:
                     if (GetComponent<player_Component>().IncantorumLogos.activeSelf == true)
                     {
-                        GetComponent<player_Component>().Shift();
+                        GetComponent<player_Component>().Spin();
                     }
                     break;
                 case 3:
                     if (GetComponent<player_Component>().DodgeEthos.activeSelf == true)
                     {
-                        GetComponent<player_Component>().Shift();
+                        GetComponent<player_Component>().Flip();
                     }
                     break;
             }
@@ -248,7 +248,7 @@ public class player2Component : MonoBehaviour {
                 Flip();
                 break;
             case 3:
-                //some other screwup
+                Spin();
                 break;
         }
     }
@@ -343,6 +343,18 @@ public class player2Component : MonoBehaviour {
                 upsidedown = true;
                 IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
+        }
+    }
+
+    public void Spin()
+    {
+        if (this.SpamPathos.activeSelf == true)
+        {
+            if (this.SpamPathos.GetComponent<CatchGame>().transform.localPosition.x <= 180)
+            {
+                this.SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(8, 0, 0);
+            }
+            this.SpamPathos.GetComponent<CatchGame>().transform.Rotate(new Vector3(0, 0, 0.5f));
         }
     }
 }

@@ -12,9 +12,9 @@ public class DodgeThis : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       this.gameObject.transform.position -= new Vector3(0, 6);
+       this.gameObject.transform.localPosition -= new Vector3(0, 6);
 
-        if (this.gameObject.transform.localPosition.y < -140)
+        if (this.gameObject.transform.localPosition.y < -130)
         {
             Destroy(this.gameObject);
         }
