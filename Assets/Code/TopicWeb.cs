@@ -18,16 +18,15 @@ public class TopicWeb : MonoBehaviour {
 		if (current_node.winning_player_number != 0)
         {
             explored.Add(current_node);
-            List<TopicWebNode> possibilities = current_node.neighbors;
-            List<TopicWebNode> valid_possibilities = new List<TopicWebNode>();
-            foreach (TopicWebNode possibility in possibilities)
+            List<TopicWebNode> possible_choices = new List<TopicWebNode>();
+            foreach (TopicWebNode neighbor in current_node.neighbors)
             {
-                if (!explored.Contains(possibility))
+                if (!explored.Contains(neighbor))
                 {
-                    valid_possibilities.Add(possibility);
+                    possible_choices.Add(neighbor);
                 }
             }
-            // choose a node from valid_possibilities to make the new current_node
+            // choose a node from possible choices to make the new current_node
         }
 	}
 }
