@@ -80,6 +80,7 @@
     <Compile Include="Assets\Code\CatchSword.cs" />
     <Compile Include="Assets\Code\DodgeBlock.cs" />
     <Compile Include="Assets\Code\DodgeThis.cs" />
+    <Compile Include="Assets\Code\GameTimer.cs" />
     <Compile Include="Assets\Code\JumpGame.cs" />
     <Compile Include="Assets\Code\JumpPlatform.cs" />
     <Compile Include="Assets\Code\JumpPlayer.cs" />

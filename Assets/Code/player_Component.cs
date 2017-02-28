@@ -100,13 +100,6 @@ public class player_Component : MonoBehaviour
             currentGame = GameObject.FindGameObjectWithTag("game");
             Attacks();
         }
-
-        //countdown
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0)
-        {
-            GameOver();
-        }
     }
 
     public void gaffe()
@@ -128,15 +121,15 @@ public class player_Component : MonoBehaviour
         OpinionFill.fillAmount += GameNo * Combo * 0.005f;
 
         //pathos->logos->ethos
-
-        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech"))
-        {
-            bubble.SetActive(false);
-        }
         foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol"))
         {
             symbol.SetActive(false);
         }
+        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech"))
+        {
+            bubble.SetActive(false);
+        }
+
 
         //set everything back to zero
         SpamPathos.SetActive(false);
@@ -353,21 +346,5 @@ public class player_Component : MonoBehaviour
                 IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 180));
             }
         }
-    }
-
-    //end state
-    public void GameOver()
-    {
-        Debug.Log("Game Over");
-        //trigger one of Drew's nodes
-        matchNo++;
-        if (matchNo > 3)
-        {
-            SetOver();
-        }
-    }
-    public void SetOver()
-    {
-
     }
 }

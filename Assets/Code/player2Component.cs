@@ -116,15 +116,13 @@ public class player2Component : MonoBehaviour {
         OpinionFill.fillAmount += GameNo * Combo * 0.005f;
 
         //pathos->logos->ethos
-
-        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech2"))
-        {
-            bubble.SetActive(false);
-        }
-        
         foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol2"))
         {
             symbol.SetActive(false);
+        }
+        foreach (GameObject bubble in GameObject.FindGameObjectsWithTag("speech2"))
+        {
+            bubble.SetActive(false);
         }
         
 
@@ -214,7 +212,7 @@ public class player2Component : MonoBehaviour {
                 case 1:
                     if (opponentGame.GetComponent<CatchGame>() != null)
                     {
-                        opponentGame.GetComponent<CatchGame>().player.GetComponent<player_Component>().Flip();
+                        opponentGame.GetComponent<CatchGame>().player.GetComponent<player_Component>().Shift();
                     }
                     break;
                 case 2:
