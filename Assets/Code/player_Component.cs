@@ -190,8 +190,8 @@ public class player_Component : MonoBehaviour
     {
         isPlayingGame = true;
         GameNo++;
-        //IncantorumLogos.GetComponent<Incantorum>().ResetGame();
-        //IncantorumLogos.SetActive(true);
+        IncantorumLogos.GetComponent<JumpGame>().ResetGame();
+        IncantorumLogos.SetActive(true);
     }
     public void PlayRecover()
     {
