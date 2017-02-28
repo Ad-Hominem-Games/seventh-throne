@@ -10,6 +10,10 @@ public class TopicWebNode : MonoBehaviour {
 
     public int winning_player_number = 0;
 
+    public enum Status { Uncontested, Contesting, PlayerOneVictory, PlayerTwoVictory }
+
+    public Status status = Status.Uncontested;
+
     public List<TopicWebNode> neighbors;
 
     // Use this for initialization
@@ -23,11 +27,11 @@ public class TopicWebNode : MonoBehaviour {
 
     Color GetColor()
     {
-        switch(winning_player_number)
+        switch(status)
         {
-            case 1:
+            case Status.PlayerOneVictory:
                 return player_one_victory_color;
-            case 2:
+            case Status.PlayerTwoVictory:
                 return player_two_victory_color;
             default:
                 return not_yet_contested_color;
