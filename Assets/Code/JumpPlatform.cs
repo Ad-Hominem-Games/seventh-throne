@@ -14,7 +14,7 @@ public class JumpPlatform : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.position -= new Vector3(0, 0.7f);
+        this.gameObject.transform.localPosition -= new Vector3(0, 0.7f);
 
         if (this.gameObject.transform.localPosition.y < -140)
         {

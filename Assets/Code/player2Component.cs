@@ -210,21 +210,21 @@ public class player2Component : MonoBehaviour {
             switch (gameType)
             {
                 case 1:
-                    if (opponentGame.GetComponent<dodgeGame>() != null)
+                    if (opponentGame.GetComponent<CatchGame>() != null)
                     {
-                        opponentGame.GetComponent<dodgeGame>().player.GetComponent<player_Component>().Flip();
+                        opponentGame.GetComponent<CatchGame>().player.GetComponent<player_Component>().Shift();
                     }
                     break;
                 case 2:
-                    if (GetComponent<player_Component>().IncantorumLogos.activeSelf == true)
+                    if (opponentGame.GetComponent<JumpGame>() != null)
                     {
-                        GetComponent<player_Component>().Spin();
+                        opponentGame.GetComponent<JumpGame>().player.GetComponent<player_Component>().Flip();
                     }
                     break;
                 case 3:
-                    if (GetComponent<player_Component>().DodgeEthos.activeSelf == true)
+                    if (opponentGame.GetComponent<dodgeGame>() != null)
                     {
-                        GetComponent<player_Component>().Flip();
+                        opponentGame.GetComponent<dodgeGame>().player.GetComponent<player_Component>().Spin();
                     }
                     break;
             }
@@ -235,9 +235,6 @@ public class player2Component : MonoBehaviour {
     public void Hurting()
     {
         //wacky business:
-        //move screen from side to side
-        //flip upside down
-        //flip/reverse?
         whatMess = Random.Range(1, 4);
         switch (whatMess)
         {
@@ -348,13 +345,13 @@ public class player2Component : MonoBehaviour {
 
     public void Spin()
     {
-        if (this.SpamPathos.activeSelf == true)
+        if (this.IncantorumLogos.activeSelf == true)
         {
-            if (this.SpamPathos.GetComponent<CatchGame>().transform.localPosition.x <= 180)
+            if (this.IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x <= 180)
             {
-                this.SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(8, 0, 0);
+                this.IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(8, 0, 0);
             }
-            this.SpamPathos.GetComponent<CatchGame>().transform.Rotate(new Vector3(0, 0, 0.5f));
+            this.IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 0.5f));
         }
     }
 }
