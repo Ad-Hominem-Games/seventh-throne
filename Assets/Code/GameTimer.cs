@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class GameTimer : MonoBehaviour {
     public int matchNo;
     public float p1fill;
     public float p2fill;
+    public Text text;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,7 @@ public class GameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timeLeft -= Time.deltaTime;
+        text.text = "Time Left:" + Mathf.Round(timeLeft);
         if (timeLeft <= 0)
         {
             GameOver();
