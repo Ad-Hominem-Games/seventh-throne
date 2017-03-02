@@ -77,7 +77,7 @@ public class dodgeGame : MonoBehaviour {
         if (player.GetComponent<player_Component>() != null)
         {
             WinTime = Time.time + 10f;
-            SpawnRate = 0.5f - player.GetComponent<player_Component>().GameNo * 0.05f;
+            SpawnRate = 0.5f - player.GetComponent<player_Component>().Combo * 0.05f;
             foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
             {
                 Destroy(bolt.gameObject);
@@ -87,7 +87,7 @@ public class dodgeGame : MonoBehaviour {
         if (player.GetComponent<player2Component>() != null)
         {
             WinTime = Time.time + 10f;
-            SpawnRate = 0.5f - player.GetComponent<player2Component>().GameNo * .05f;
+            SpawnRate = 0.5f - player.GetComponent<player2Component>().Combo * .05f;
             foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
             {
                 Destroy(bolt.gameObject);

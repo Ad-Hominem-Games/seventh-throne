@@ -142,7 +142,7 @@ public class player_Component : MonoBehaviour
 
     public void SetBubble()
     {
-        switch (GameNo)
+        switch (Combo)
         {
             case 1:
                 BalloonOne.SetActive(true);
@@ -270,10 +270,10 @@ public class player_Component : MonoBehaviour
             switch (boardShift)
             {
                 case 1:
-                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(7f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(3f, 0);
                     break;
                 case 2:
-                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(7f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(3f, 0);
                     break;
             }
         }
@@ -290,10 +290,10 @@ public class player_Component : MonoBehaviour
             switch (boardShift)
             {
                 case 1:
-                    DodgeEthos.GetComponent<dodgeGame>().transform.position += new Vector3(7f, 0);
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position += new Vector3(3f, 0);
                     break;
                 case 2:
-                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(7f, 0);
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(3f, 0);
                     break;
             }
         }
@@ -310,10 +310,10 @@ public class player_Component : MonoBehaviour
             switch (boardShift)
             {
                 case 1:
-                    IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(7f, 0);
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(3f, 0);
                     break;
                 case 2:
-                    IncantorumLogos.GetComponent<JumpGame>().transform.position -= new Vector3(7f, 0);
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position -= new Vector3(3f, 0);
                     break;
             }
         }
