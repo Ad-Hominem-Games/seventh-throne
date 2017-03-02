@@ -345,13 +345,13 @@ public class player2Component : MonoBehaviour {
 
     public void Spin()
     {
-        if (this.IncantorumLogos.activeSelf == true)
+        if (this.DodgeEthos.activeSelf == true)
         {
-            if (this.IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x <= 180)
+            if (this.DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x <= 180)
             {
-                this.IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(8, 0, 0);
+                this.DodgeEthos.GetComponent<dodgeGame>().transform.position += new Vector3(8, 0, 0);
             }
-            this.IncantorumLogos.GetComponent<JumpGame>().transform.Rotate(new Vector3(0, 0, 0.5f));
+            this.DodgeEthos.GetComponent<dodgeGame>().transform.Rotate(new Vector3(0, 0, 0.5f));
         }
     }
 }
