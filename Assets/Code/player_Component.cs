@@ -234,7 +234,6 @@ public class player_Component : MonoBehaviour
                 case 3:
                     if (opponentGame.GetComponent<dodgeGame>() != null)
                     {
-                        print(opponentGame.GetComponent<dodgeGame>().player.GetComponent<player2Component>());
                         opponentGame.GetComponent<dodgeGame>().player.GetComponent<player2Component>().Spin();
                     }
                     break;
