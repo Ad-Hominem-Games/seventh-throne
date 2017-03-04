@@ -14,7 +14,6 @@ public class CatchGame : MonoBehaviour
     public float WinTime;
     public float spawngoal;
     public float currentspawn;
-    public Vector3 defaultPosition;
 
     // Use this for initialization
     void Start()

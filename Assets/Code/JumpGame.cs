@@ -14,6 +14,7 @@ public class JumpGame : MonoBehaviour {
     public float WinTime;
     public float spawngoal;
     public float currentspawn;
+    public Vector3 defaultPosition = new Vector3(-61, 50);
 
     // Use this for initialization
     void Start()

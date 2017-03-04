@@ -33,8 +33,8 @@ public class GameTimer : MonoBehaviour {
     public void GameOver()
     {
         Debug.Log("Game Over");
-        p1fill = p1.GetComponent<player_Component>().OpinionFill.fillAmount;
-        p2fill = p2.GetComponent<player2Component>().OpinionFill.fillAmount;
+        p1fill = p1.GetComponent<player_Component>().ComposureBar.fillAmount;
+        p2fill = p2.GetComponent<player2Component>().ComposureBar.fillAmount;
         matchNo++;
         if (matchNo > 3)
         {

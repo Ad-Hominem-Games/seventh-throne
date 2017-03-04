@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JumpPlayer : MonoBehaviour {
 
-    public float gravity = 1.7f;
+    public float gravity = 1.2f;
     private bool touching = false;
     // Use this for initialization
     void Start()
@@ -37,7 +37,7 @@ public class JumpPlayer : MonoBehaviour {
             {
                 this.gameObject.transform.localPosition += new Vector3(0, 100);
                 touching = false;
-                gravity = 1.7f;
+                gravity = 1.2f;
             }
         }
         //player2
@@ -61,7 +61,7 @@ public class JumpPlayer : MonoBehaviour {
             {
                 this.gameObject.transform.localPosition += new Vector3(0, 100);
                 touching = false;
-                gravity = 1.7f;
+                gravity = 1.2f;
             }
         }
         this.gameObject.transform.localPosition -= new Vector3(0, gravity);

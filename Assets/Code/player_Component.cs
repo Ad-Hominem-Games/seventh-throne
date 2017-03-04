@@ -32,8 +32,7 @@ public class player_Component : MonoBehaviour
     public int boardShift;
     public int whatMess;
     public bool upsidedown = false;
-    public float timeLeft = 60;
-    public int matchNo = 0;
+    public Vector3 defaultPosition = new Vector3(61, 70);
 
     // Use this for initialization
     void Start()
@@ -63,6 +62,15 @@ public class player_Component : MonoBehaviour
         if (isPlayingGame == true && Input.GetKeyDown(KeyCode.Space))
         {
             isPlayingGame = false;
+            if (opponentGame != null)
+            {
+                opponentGame.transform.localPosition = new Vector3(61, 70);
+                opponentGame.transform.localRotation = Quaternion.identity;
+                if (opponentGame.GetComponent<JumpGame>() != null)
+                {
+                    opponentGame.GetComponent<JumpGame>().player.GetComponent<player2Component>().upsidedown = false;
+                }
+            }
             EndPoint();
         }
         if (isPlayingGame == false)
@@ -220,7 +228,6 @@ public class player_Component : MonoBehaviour
                 case 2:
                     if (opponentGame.GetComponent<JumpGame>() != null)
                     {
-                        print(opponentGame.GetComponent<JumpGame>().player);
                         opponentGame.GetComponent<JumpGame>().player.GetComponent<player2Component>().Flip();
                     }
                     break;
@@ -235,6 +242,7 @@ public class player_Component : MonoBehaviour
         }
     }
 
+    /*
     //game screw up catch-all
     public void Hurting()
     {
@@ -253,11 +261,14 @@ public class player_Component : MonoBehaviour
                 break;
         }
     }
+    */
 
     //being attacked
     public void Shift()
     {
-        if (this.SpamPathos.activeSelf == true)
+        if (this.SpamPathos.activeSelf == true && 
+            opponentGame != null &&
+            opponentGame.activeSelf == true)
         {
             if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x >= -61)
             {
@@ -277,75 +288,13 @@ public class player_Component : MonoBehaviour
                     break;
             }
         }
-        if (this.DodgeEthos.activeSelf == true)
-        {
-            if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x >= -61)
-            {
-                boardShift = 2;
-            }
-            if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x <= -301)
-            {
-                boardShift = 1;
-            }
-            switch (boardShift)
-            {
-                case 1:
-                    DodgeEthos.GetComponent<dodgeGame>().transform.position += new Vector3(7f, 0);
-                    break;
-                case 2:
-                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(7f, 0);
-                    break;
-            }
-        }
-        if (this.IncantorumLogos.activeSelf == true)
-        {
-            if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x >= -61)
-            {
-                boardShift = 2;
-            }
-            if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x <= -301)
-            {
-                boardShift = 1;
-            }
-            switch (boardShift)
-            {
-                case 1:
-                    IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(7f, 0);
-                    break;
-                case 2:
-                    IncantorumLogos.GetComponent<JumpGame>().transform.position -= new Vector3(7f, 0);
-                    break;
-            }
-        }
     }
 
     public void Flip()
     {
-        if (this.SpamPathos.activeSelf == true)
-        {
-            if (upsidedown == false)
-            {
-                upsidedown = true;
-                if (SpamPathos.GetComponent<CatchGame>().transform.localPosition.x > -75)
-                {
-                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(30, 0, 0);
-                }
-                SpamPathos.GetComponent<CatchGame>().transform.Rotate(new Vector3(0, 0, 180));
-            }
-        }
-        if (this.DodgeEthos.activeSelf == true)
-        {
-            if (upsidedown == false)
-            {
-                upsidedown = true;
-                if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x > -75)
-                {
-                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(30, 0, 0);
-                }
-                DodgeEthos.GetComponent<dodgeGame>().transform.Rotate(new Vector3(0, 0, 180));
-            }
-        }
-        if (this.IncantorumLogos.activeSelf == true)
+        if (this.IncantorumLogos.activeSelf == true &&
+            opponentGame != null &&
+            opponentGame.activeSelf == true)
         {
             if (upsidedown == false)
             {
@@ -361,7 +310,9 @@ public class player_Component : MonoBehaviour
 
     public void Spin()
     {
-        if (this.DodgeEthos.activeSelf == true)
+        if (this.DodgeEthos.activeSelf == true && 
+            opponentGame != null && 
+            opponentGame.activeSelf == true)
         {
             if (this.DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x >= -180)
             {
