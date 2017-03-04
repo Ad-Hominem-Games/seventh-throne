@@ -287,8 +287,6 @@ public class player_Component : MonoBehaviour
                     break;
             }
         }
-<<<<<<< HEAD
-=======
         if (this.DodgeEthos.activeSelf == true)
         {
             if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x >= -61)
@@ -329,7 +327,6 @@ public class player_Component : MonoBehaviour
                     break;
             }
         }
->>>>>>> 60525ed98efa2265a3c3528f11644cbedd56b6c8
     }
 
     public void Flip()
