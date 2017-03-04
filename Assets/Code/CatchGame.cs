@@ -79,7 +79,7 @@ public class CatchGame : MonoBehaviour
         if (player.GetComponent<player_Component>() != null)
         {
             WinTime = Time.time + 10f;
-            SpawnRate = 0.15f - player.GetComponent<player_Component>().GameNo * .005f;
+            SpawnRate = 0.15f - player.GetComponent<player_Component>().Combo * .005f;
             foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
             {
                 Destroy(sword.gameObject);
@@ -89,7 +89,7 @@ public class CatchGame : MonoBehaviour
         if (player.GetComponent<player2Component>() != null)
         {
             WinTime = Time.time + 10f;
-            SpawnRate = 0.15f - player.GetComponent<player2Component>().GameNo * .005f;
+            SpawnRate = 0.15f - player.GetComponent<player2Component>().Combo * .005f;
             foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
             {
                 Destroy(sword.gameObject);

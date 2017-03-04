@@ -147,7 +147,7 @@ public class player2Component : MonoBehaviour {
 
     public void SetBubble()
     {
-        switch (GameNo)
+        switch (Combo)
         {
             case 1:
                 BalloonOne.SetActive(true);
@@ -280,13 +280,57 @@ public class player2Component : MonoBehaviour {
             switch (boardShift)
             {
                 case 1:
-                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(7f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position += new Vector3(3f, 0);
                     break;
                 case 2:
-                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(7f, 0);
+                    SpamPathos.GetComponent<CatchGame>().transform.position -= new Vector3(3f, 0);
+                    break;
+
+            }
+        }
+<<<<<<< HEAD
+=======
+        if (this.DodgeEthos.activeSelf == true)
+        {
+            if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x <= 61)
+            {
+                boardShift = 1;
+            }
+            if (DodgeEthos.GetComponent<dodgeGame>().transform.localPosition.x >= 301)
+            {
+                boardShift = 2;
+            }
+            switch (boardShift)
+            {
+                case 1:
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position += new Vector3(3f, 0);
+                    break;
+                case 2:
+                    DodgeEthos.GetComponent<dodgeGame>().transform.position -= new Vector3(3f, 0);
                     break;
             }
         }
+        if (this.IncantorumLogos.activeSelf == true)
+        {
+            if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x <= 61)
+            {
+                boardShift = 1;
+            }
+            if (IncantorumLogos.GetComponent<JumpGame>().transform.localPosition.x >= 301)
+            {
+                boardShift = 2;
+            }
+            switch (boardShift)
+            {
+                case 1:
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position += new Vector3(3f, 0);
+                    break;
+                case 2:
+                    IncantorumLogos.GetComponent<JumpGame>().transform.position -= new Vector3(3f, 0);
+                    break;
+            }
+        }
+>>>>>>> 60525ed98efa2265a3c3528f11644cbedd56b6c8
     }
 
     public void Flip()
