@@ -251,7 +251,6 @@ public class player2Component : MonoBehaviour {
         GameNo++;
         DodgeEthos.GetComponent<dodgeGame>().ResetGame();
         DodgeEthos.SetActive(true);
-        ethosSymbol.SetActive(true);
     }
     public void PlayPathos()
     {
@@ -259,7 +258,6 @@ public class player2Component : MonoBehaviour {
         GameNo++;
         SpamPathos.GetComponent<CatchGame>().ResetGame();
         SpamPathos.SetActive(true);
-        pathosSymbol.SetActive(true);
     }
     public void PlayLogos()
     {
