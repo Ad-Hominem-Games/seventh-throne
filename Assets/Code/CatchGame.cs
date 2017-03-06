@@ -10,7 +10,7 @@ public class CatchGame : MonoBehaviour
     public GameObject sword;
     public Image TimeBar;
     public float Spawntime;
-    public float SpawnRate = 0.15f;
+    public float SpawnRate = 0.5f;
     public float WinTime;
     public float spawngoal;
     public float currentspawn;
@@ -19,7 +19,6 @@ public class CatchGame : MonoBehaviour
     void Start()
     {
         Spawntime = Time.time + 1f;
-        WinTime += Time.time;
 
     }
 
@@ -47,7 +46,7 @@ public class CatchGame : MonoBehaviour
             }
 
         }
-        TimeBar.fillAmount = (WinTime - Time.time) / 10f;
+        TimeBar.fillAmount = (WinTime - Time.time) / 6f;
     }
 
     public void spawnSword()
@@ -78,8 +77,8 @@ public class CatchGame : MonoBehaviour
     {
         if (player.GetComponent<player_Component>() != null)
         {
-            WinTime = Time.time + 10f;
-            SpawnRate = 0.15f - player.GetComponent<player_Component>().Combo * .005f;
+            WinTime = Time.time + 6f;
+            SpawnRate = 0.5f - player.GetComponent<player_Component>().Combo * .05f;
             foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
             {
                 Destroy(sword.gameObject);
@@ -88,8 +87,8 @@ public class CatchGame : MonoBehaviour
         }
         if (player.GetComponent<player2Component>() != null)
         {
-            WinTime = Time.time + 10f;
-            SpawnRate = 0.15f - player.GetComponent<player2Component>().Combo * .005f;
+            WinTime = Time.time + 6f;
+            SpawnRate = 0.5f - player.GetComponent<player2Component>().Combo * .05f;
             foreach (CatchSword sword in GetComponentsInChildren<CatchSword>())
             {
                 Destroy(sword.gameObject);

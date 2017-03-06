@@ -8,6 +8,7 @@ public class player_Component : MonoBehaviour
 
     public string input;
     public Image OpinionFill;
+    public Image OpinionShow;
     public Image ComposureBar;
     public bool madeMistake = false;
     public bool isPlayingGame = false;
@@ -31,7 +32,16 @@ public class player_Component : MonoBehaviour
     public int gameType;
     public int boardShift;
     public int whatMess;
+    public int nodenumber;
+    private int playerdouble;
+    private int ethosdouble;
+    private int pathosdouble;
+    private int logosdouble;
+    private int attackdouble;
+    private int gaffedouble;
+    private int gamedouble;
     public bool upsidedown = false;
+    public bool TopicActive = false;
     public Vector3 defaultPosition = new Vector3(61, 70);
 
     // Use this for initialization
@@ -39,74 +49,78 @@ public class player_Component : MonoBehaviour
     {
         ComposureBar.fillAmount = 1.0f;
         OpinionFill.fillAmount = 0.15f;
+        OpinionShow.fillAmount = OpinionFill.fillAmount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //gaffe mechanic
-        if (ComposureBar.fillAmount <= 0.0)
+        NodeVariance();
+        if (TopicActive == false)
         {
-            gaffe();
-        }
-
-        //mistake, as in messed up a minigame
-        if (madeMistake == true)
-        {
-            ComposureBar.fillAmount -= 0.2f;
-            madeMistake = false;
-        }
-
-        //different argument types (points)
-        input = Input.inputString;
-        if (isPlayingGame == true && Input.GetKeyDown(KeyCode.Space))
-        {
-            isPlayingGame = false;
-            if (opponentGame != null)
+            //gaffe mechanic
+            if (ComposureBar.fillAmount <= 0.1)
             {
-                opponentGame.transform.localPosition = new Vector3(61, 70);
-                opponentGame.transform.localRotation = Quaternion.identity;
-                if (opponentGame.GetComponent<JumpGame>() != null)
+                gaffe();
+            }
+
+            //mistake, as in messed up a minigame
+            if (madeMistake == true)
+            {
+                ComposureBar.fillAmount -= 0.2f * attackdouble;
+                madeMistake = false;
+            }
+
+            //different argument types (points)
+            input = Input.inputString;
+            if (isPlayingGame == true && Input.GetKeyDown(KeyCode.Space))
+            {
+                EndPoint();
+            }
+            if (isPlayingGame == false)
+            {
+                switch (input)
                 {
-                    opponentGame.GetComponent<JumpGame>().player.GetComponent<player2Component>().upsidedown = false;
+                    case "z":     //pathos
+                        PlayPathos();
+                        if (pathosdouble == 2)
+                        {
+                            gamedouble = 2;
+                        }
+                        //start a pathos minigame
+                        break;
+
+                    case "x":     //logos
+                        PlayLogos();
+                        if (logosdouble == 2)
+                        {
+                            gamedouble = 2;
+                        }
+                        //start a logos minigame
+                        break;
+
+                    case "c":     //ethos
+                        PlayEthos();
+                        if (ethosdouble == 2)
+                        {
+                            gamedouble = 2;
+                        }
+                        //start an ethos minigame
+                        break;
+
+                    case "v":   //recover
+                        PlayRecover();
+                        break;
                 }
             }
-            EndPoint();
-        }
-        if (isPlayingGame == false)
-        {
-            switch (input)
+            SetBubble();
+            OpinionShow.fillAmount = OpinionFill.fillAmount + Combo * 0.02f * playerdouble * gamedouble;
+            //attacks
+            if (GameObject.FindGameObjectsWithTag("game") != null)
             {
-                case "z":     //pathos
-                    pathosSymbol.SetActive(true);
-                    PlayPathos();
-                    //start a pathos minigame
-                    break;
-
-                case "x":     //logos
-                    logosSymbol.SetActive(true);
-                    PlayLogos();
-                    //start a logos minigame
-                    break;
-
-                case "c":     //ethos
-                    ethosSymbol.SetActive(true);
-                    PlayEthos();
-                    //start an ethos minigame
-                    break;
-
-                case "v":   //recover
-                    PlayRecover();
-                    break;
+                currentGame = GameObject.FindGameObjectWithTag("game");
+                Attacks();
             }
-        }
-        SetBubble();
-
-        //attacks
-        if (GameObject.FindGameObjectsWithTag("game") != null)
-        {
-            currentGame = GameObject.FindGameObjectWithTag("game");
-            Attacks();
         }
     }
 
@@ -118,15 +132,28 @@ public class player_Component : MonoBehaviour
         }
         else
         {
-            OpinionFill.fillAmount -= 0.05f;
+            OpinionFill.fillAmount = OpinionFill.fillAmount * 2/3 / gaffedouble;
         }
         ComposureBar.fillAmount = 1.0f;
     }
 
     public void EndPoint()
     {
+
+        isPlayingGame = false;
         //damage to opinion
-        OpinionFill.fillAmount += GameNo * Combo * 0.005f;
+        OpinionFill.fillAmount += Combo * 0.02f * playerdouble * gamedouble;
+
+
+        if (opponentGame != null)
+        {
+            opponentGame.transform.localPosition = new Vector3(61, 70);
+            opponentGame.transform.localRotation = Quaternion.identity;
+            if (opponentGame.GetComponent<JumpGame>() != null)
+            {
+                opponentGame.GetComponent<JumpGame>().player.GetComponent<player2Component>().upsidedown = false;
+            }
+        }
 
         //pathos->logos->ethos
         foreach (GameObject symbol in GameObject.FindGameObjectsWithTag("symbol"))
@@ -148,12 +175,62 @@ public class player_Component : MonoBehaviour
         Combo = 0;
     }
 
+    public void NodeVariance()
+    {
+        playerdouble = 1;
+        pathosdouble = 1;
+        ethosdouble = 1;
+        logosdouble = 1;
+        gaffedouble = 1;
+        attackdouble = 1;
+        gamedouble = 1;
+        switch (nodenumber)
+        {
+            case 0:
+                break;
+            case 1:
+                logosdouble = 2;
+                break;
+            case 2:
+                pathosdouble = 2;
+                break;
+            case 3:
+                ethosdouble = 2;
+                break;
+            case 4:
+                gaffedouble = 2;
+                break;
+            case 5:
+                attackdouble = 2;
+                break;
+            case 6:
+                playerdouble = 2;
+                break;
+            case 7:
+                break;
+        }
+    }
+
+
+
     public void SetBubble()
     {
         switch (Combo)
         {
             case 1:
                 BalloonOne.SetActive(true);
+                if (currentGame == SpamPathos)
+                {
+                    pathosSymbol.SetActive(true);
+                }
+                if (currentGame == DodgeEthos)
+                {
+                    ethosSymbol.SetActive(true);
+                }
+                if (currentGame == IncantorumLogos)
+                {
+                    logosSymbol.SetActive(true);
+                }
                 break;
             case 2:
                 BalloonTwo.SetActive(true);

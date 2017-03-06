@@ -8,6 +8,10 @@ public class TopicWeb : MonoBehaviour {
     public TopicWebNode current_node;
     public TopicWebNode focused_node;
 
+    public GameObject timer;
+
+    public int nodenumber;
+
     public List<TopicWebNode> explored_topics;
     public List<TopicWebNode> potential_topics;
 
@@ -44,7 +48,7 @@ public class TopicWeb : MonoBehaviour {
                 PickNextTopic(KeyCode.A, KeyCode.D, KeyCode.Space);
                 break;
             case Status.PlayerTwoPicking:
-                PickNextTopic(KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.H);
+                PickNextTopic(KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.Return);
                 break;
             default:
                 break;
@@ -66,6 +70,7 @@ public class TopicWeb : MonoBehaviour {
 
     void PickNextTopic(KeyCode left_key, KeyCode right_key, KeyCode select_key)
     {
+        focused_node.GetComponent<TopicWebNode>().focused = false;
         int focused_node_index = potential_topics.IndexOf(focused_node);
         if (Input.GetKeyDown(left_key))
         {
@@ -78,18 +83,27 @@ public class TopicWeb : MonoBehaviour {
         }
         if (Input.GetKeyDown(right_key))
         {
+
             focused_node_index += 1;
             if (focused_node_index > potential_topics.Count - 1)
             {
                 focused_node_index = 0;
             }
+            focused_node = potential_topics[focused_node_index];
         }
+        focused_node.GetComponent<TopicWebNode>().focused = true;
         if (Input.GetKeyDown(select_key))
         {
             current_node = focused_node;
-            focused_node = null;
+            nodenumber = current_node.nodenumber;
+            timer.GetComponent<GameTimer>().nodenumber = nodenumber;
+            focused_node.GetComponent<TopicWebNode>().focused = false;
+
             potential_topics = null;
+            current_node.status = TopicWebNode.Status.Contesting;
             status = Status.Contesting;
+            timer.SetActive(true);
+            this.gameObject.SetActive(false);
         }
     }
 }

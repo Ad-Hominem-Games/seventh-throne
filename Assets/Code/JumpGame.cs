@@ -10,17 +10,19 @@ public class JumpGame : MonoBehaviour {
     public GameObject JumpPlayer;
     public Image TimeBar;
     public float Spawntime;
-    public float SpawnRate = 1f;
+    public float SpawnRate = 0.8f;
     public float WinTime;
     public float spawngoal;
     public float currentspawn;
+    private int SpawnNumber = 0;
     public Vector3 defaultPosition = new Vector3(-61, 50);
 
     // Use this for initialization
     void Start()
     {
-        Spawntime = Time.time + 0.01f;
-        WinTime += Time.time;
+        spawnPlatform();
+        spawnPlatform();
+        WinTime = Time.time + 6f;
 
     }
 
@@ -33,40 +35,63 @@ public class JumpGame : MonoBehaviour {
             spawnPlatform();
         }
 
-        //if (Time.time > WinTime)
-        //{
-        //   ResetGame();
-        //    player.GetComponent<player_Component>().Combo++;
-        //    player.GetComponent<player_Component>().PlayLogos();
+        if (Time.time > WinTime)
+        {
+           ResetGame();
+            if (player.GetComponent<player_Component>() != null)
+            {
+                player.GetComponent<player_Component>().Combo++;
+                player.GetComponent<player_Component>().PlayLogos();
+            }
+            if (player.GetComponent<player2Component>() != null)
+            {
+                player.GetComponent<player2Component>().Combo++;
+                player.GetComponent<player2Component>().PlayLogos();
+            }
 
-        //}
-        TimeBar.fillAmount = (WinTime - Time.time) / 10f;
+            }
+        TimeBar.fillAmount = (WinTime - Time.time) / 6f;
     }
 
     public void spawnPlatform()
     {
 
-        Instantiate(platform, this.gameObject.transform);
+        GameObject Clone = Instantiate(platform, this.gameObject.transform);
+        Clone.GetComponent<JumpPlatform>().PlatNumber = SpawnNumber;
+        SpawnNumber++;
         Spawntime = Time.time + SpawnRate;
 
     }
 
     public void lostGame()
     {
-        player.GetComponent<player_Component>().madeMistake = true;
-        ResetGame();
-        player.GetComponent<player_Component>().PlayLogos();
-
+        if (player.GetComponent<player_Component>() != null)
+        {
+            player.GetComponent<player_Component>().madeMistake = true;
+            ResetGame();
+            player.GetComponent<player_Component>().PlayLogos();
+        }
+        if (player.GetComponent<player2Component>() != null)
+        {
+            player.GetComponent<player2Component>().madeMistake = true;
+            ResetGame();
+            player.GetComponent<player2Component>().PlayLogos();
+        }
     }
 
     public void ResetGame()
     {
-        WinTime = Time.time + 10f;
-        JumpPlayer.transform.localPosition = new Vector3(0, 180);
-        foreach (JumpPlatform Platform in GetComponentsInChildren<JumpPlatform>())
-        {
-            Destroy(Platform.gameObject);
-        }
-        this.gameObject.SetActive(false);
+            WinTime = Time.time + 6f;
+            JumpPlayer.transform.localPosition = new Vector3(0, 10);
+            SpawnNumber = 0;
+            Spawntime = Time.time;
+            foreach (JumpPlatform Platform in GetComponentsInChildren<JumpPlatform>())
+            {
+                Destroy(Platform.gameObject);
+            }
+            spawnPlatform();
+            spawnPlatform();
+            spawnPlatform();
+            this.gameObject.SetActive(false);
     }
 }

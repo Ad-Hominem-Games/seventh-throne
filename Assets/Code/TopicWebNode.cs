@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TopicWebNode : MonoBehaviour {
 
     public Color not_yet_contested_color = Color.gray;
-    public Color player_one_victory_color = Color.blue;
-    public Color player_two_victory_color = Color.red;
+    public Color player_one_victory_color;
+    public Color player_two_victory_color;
+    public Image focusedCircle;
+    public bool focused = false;
+
+    public int nodenumber;
 
     public int winning_player_number = 0;
 
@@ -22,8 +27,17 @@ public class TopicWebNode : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.gameObject.GetComponent<SpriteRenderer>().color = GetColor();
-	}
+        CheckStatus();
+        this.gameObject.GetComponent<Image>().color = GetColor();
+        if (focused == true && focusedCircle.gameObject.activeSelf == false)
+        {
+            focusedCircle.gameObject.SetActive(true);
+        }
+        if (focused == false && focusedCircle.gameObject.activeSelf == true)
+        {
+            focusedCircle.gameObject.SetActive(false);
+        }
+    }
 
     Color GetColor()
     {
@@ -35,6 +49,21 @@ public class TopicWebNode : MonoBehaviour {
                 return player_two_victory_color;
             default:
                 return not_yet_contested_color;
+        }
+    }
+
+    void CheckStatus()
+    {
+        switch (winning_player_number)
+        {
+            case 0:
+                break;
+            case 1:
+                status = Status.PlayerOneVictory;
+                break;
+            case 2:
+                status = Status.PlayerTwoVictory;
+                break;
         }
     }
 }

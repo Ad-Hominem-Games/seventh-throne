@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StartGameButton : MonoBehaviour {
 
+    public GameObject StartMenu;
+    public GameObject MainMenu;
+    public GameObject CharacterSelectMenu;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +20,23 @@ public class StartGameButton : MonoBehaviour {
 	}
 
     void StartGame()
+    {
+        StartMenu.SetActive(false);
+        MainMenu.SetActive(true);
+    }
+
+    void VersusMode()
+    {
+        MainMenu.SetActive(false);
+        CharacterSelectMenu.SetActive(true);
+    }
+
+    void ReturnMain()
+    {
+        CharacterSelectMenu.SetActive(false);
+        MainMenu.SetActive(true);
+    }
+    void GameBegin()
     {
         SceneManager.LoadScene("Debate_Scene");
     }

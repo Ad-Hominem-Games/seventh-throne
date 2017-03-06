@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour {
 
 
     public GameObject p1;
     public GameObject p2;
+    public GameObject TopicWeb;
     public float timeLeft = 60;
     public int matchNo;
+    public int nodenumber;
     public float p1fill;
     public float p2fill;
+    public float p1compfill;
+    public float p2compfill;
     public Text text;
 
 	// Use this for initialization
@@ -22,49 +27,78 @@ public class GameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timeLeft -= Time.deltaTime;
-        text.text = "Time Left:" + Mathf.Round(timeLeft);
+        text.text = ""+Mathf.Round(timeLeft);
         if (timeLeft <= 0)
         {
             GameOver();
         }
+        p1.GetComponent<player_Component>().TopicActive = false;
+        p2.GetComponent<player2Component>().TopicActive = false;
+        p1.GetComponent<player_Component>().nodenumber = nodenumber;
+        p2.GetComponent<player2Component>().nodenumber = nodenumber;
     }
 
     //end state
     public void GameOver()
     {
-        Debug.Log("Game Over");
-        p1fill = p1.GetComponent<player_Component>().ComposureBar.fillAmount;
-        p2fill = p2.GetComponent<player2Component>().ComposureBar.fillAmount;
+        p1.GetComponent<player_Component>().TopicActive = true;
+        p2.GetComponent<player2Component>().TopicActive = true;
+        p1compfill = p1.GetComponent<player_Component>().ComposureBar.fillAmount;
+        p2compfill = p2.GetComponent<player2Component>().ComposureBar.fillAmount;
         matchNo++;
         if (matchNo > 3)
         {
             SetOver();
         }
-        if (p1fill == p2fill)
+        if (p1compfill == p2compfill)
         {
-            //...tie game, need to figure that out
+            int temp = (int)Mathf.Round(Random.Range(0, 1));
+            if (temp == 0)
+            {
+                p1.GetComponent<player_Component>().EndPoint();
+                p2.GetComponent<player2Component>().EndPoint();
+                TopicWeb.SetActive(true);
+                TopicWeb.GetComponent<TopicWeb>().current_node.GetComponent<TopicWebNode>().winning_player_number = 1;
+            }
+            else
+            {
+                p1.GetComponent<player_Component>().EndPoint();
+                p2.GetComponent<player2Component>().EndPoint();
+                TopicWeb.SetActive(true);
+                TopicWeb.GetComponent<TopicWeb>().current_node.GetComponent<TopicWebNode>().winning_player_number = 2;
+            }
         }
-        else if (p1fill > p2fill)
+        else if (p1compfill > p2compfill)
         {
-            //trigger topic web, but with p1 in control
+            p1.GetComponent<player_Component>().EndPoint();
+            p2.GetComponent<player2Component>().EndPoint();
+            TopicWeb.SetActive(true);
+            TopicWeb.GetComponent<TopicWeb>().current_node.GetComponent<TopicWebNode>().winning_player_number = 1;
         }
-        else if (p2fill > p1fill)
+        else if (p2compfill > p1compfill)
         {
-            //trigger topic web, but with p2 in control
+            p1.GetComponent<player_Component>().EndPoint();
+            p2.GetComponent<player2Component>().EndPoint();
+            TopicWeb.SetActive(true);
+            TopicWeb.GetComponent<TopicWeb>().current_node.GetComponent<TopicWebNode>().winning_player_number = 2;
         }
         timeLeft = 60;
+        this.gameObject.SetActive(false);
     }
     public void SetOver()
     {
-        if (p1fill > p2fill)
+        p1fill = p1.GetComponent<player_Component>().OpinionFill.fillAmount;
+        p2fill = p2.GetComponent<player2Component>().OpinionFill.fillAmount;
+        if (p1fill >= p2fill)
         {
-            print("Player One Wins!!");
+            PlayerPrefs.SetInt("winner", 1);
         }
         else if (p2fill > p1fill)
         {
-            print("Player Two Wins!");
+            PlayerPrefs.SetInt("winner", 2);
         }
         //freeze game
-        print("Now Go Home");
+        SceneManager.LoadScene("WinnerScreen");
+        
     }
 }

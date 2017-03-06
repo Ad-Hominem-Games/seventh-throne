@@ -18,7 +18,6 @@ public class dodgeGame : MonoBehaviour {
     void Start()
     {
         Spawntime = Time.time + 1f;
-        WinTime += Time.time;
     }
 
     // Update is called once per frame
@@ -45,7 +44,7 @@ public class dodgeGame : MonoBehaviour {
             }
 
         }
-        TimeBar.fillAmount = (WinTime - Time.time) / 10f;
+        TimeBar.fillAmount = (WinTime - Time.time) / 6f;
     }
 
     public void spawnBolt()
@@ -76,7 +75,7 @@ public class dodgeGame : MonoBehaviour {
     {
         if (player.GetComponent<player_Component>() != null)
         {
-            WinTime = Time.time + 10f;
+            WinTime = Time.time + 6f;
             SpawnRate = 0.5f - player.GetComponent<player_Component>().Combo * 0.05f;
             foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
             {
@@ -86,7 +85,7 @@ public class dodgeGame : MonoBehaviour {
         }
         if (player.GetComponent<player2Component>() != null)
         {
-            WinTime = Time.time + 10f;
+            WinTime = Time.time + 6f;
             SpawnRate = 0.5f - player.GetComponent<player2Component>().Combo * .05f;
             foreach (DodgeThis bolt in GetComponentsInChildren<DodgeThis>())
             {

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class JumpPlayer : MonoBehaviour {
 
-    public float gravity = 1.2f;
+    public float gravity = 3f;
     private bool touching = false;
+    private Vector3 jump;
+    private bool jumpcomplete = true;
     // Use this for initialization
     void Start()
     {
@@ -35,9 +37,10 @@ public class JumpPlayer : MonoBehaviour {
         {
             if (this.GetComponentInParent<JumpGame>().player.GetComponent<player_Component>() != null)
             {
-                this.gameObject.transform.localPosition += new Vector3(0, 100);
+                jump = this.gameObject.transform.localPosition + new Vector3(0, 100);
+                jumpcomplete = false;
                 touching = false;
-                gravity = 1.2f;
+                gravity = 3f;
             }
         }
         //player2
@@ -59,23 +62,36 @@ public class JumpPlayer : MonoBehaviour {
         {
             if (this.GetComponentInParent<JumpGame>().player.GetComponent<player2Component>() != null)
             {
-                this.gameObject.transform.localPosition += new Vector3(0, 100);
+                jump = this.gameObject.transform.localPosition + new Vector3(0, 100);
+                jumpcomplete = false;
                 touching = false;
-                gravity = 1.2f;
+                gravity = 3f;
+            }
+        }
+        if (jumpcomplete == false)
+        {
+            this.gameObject.transform.localPosition = new Vector3(this.gameObject.transform.localPosition.x,(Mathf.Lerp(this.gameObject.transform.localPosition.y, jump.y, 0.2f)));
+            if (jump.y - this.gameObject.transform.localPosition.y <= 20f)
+            {
+                jumpcomplete = true;
             }
         }
         this.gameObject.transform.localPosition -= new Vector3(0, gravity);
+        if (this.gameObject.transform.localPosition.y <= -140)
+        {
+            this.GetComponentInParent<JumpGame>().lostGame();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         touching = true;
-        gravity = 0.7f;
+        gravity = 1.5f;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         touching = false;
-        gravity = 1.7f;
+        gravity = 3f;
     }
 }
