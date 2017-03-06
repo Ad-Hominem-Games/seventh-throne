@@ -8,6 +8,7 @@ public class StartGameButton : MonoBehaviour {
     public GameObject StartMenu;
     public GameObject MainMenu;
     public GameObject CharacterSelectMenu;
+    public GameObject TutorialMenu;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +35,18 @@ public class StartGameButton : MonoBehaviour {
     void ReturnMain()
     {
         CharacterSelectMenu.SetActive(false);
+        MainMenu.SetActive(true);
+    }
+
+    void TutorialBegin()
+    {
+        MainMenu.SetActive(false);
+        TutorialMenu.SetActive(true);
+    }
+
+    void TutorialBack()
+    {
+        TutorialMenu.SetActive(false);
         MainMenu.SetActive(true);
     }
     void GameBegin()
